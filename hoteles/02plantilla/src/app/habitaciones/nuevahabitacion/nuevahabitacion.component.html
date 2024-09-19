@@ -1,0 +1,62 @@
+<div class="card my-5">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-end mb-4">
+        <h3 class="mb-0">
+          {{ titulo }}
+          <!-- Interpolación: sirve para enviar datos desde el .ts hacia el html -->
+        </h3>
+      </div>
+      <form [formGroup]="frm_Habitacion" (ngSubmit)="grabar()">
+        <div class="row">
+          <div class="form-group mb-3">
+            <label class="form-label" for="numero">Número</label>
+            <input formControlName="numero" type="text" class="form-control" id="numero" placeholder="Ingrese el número de la habitación" />
+            <div *ngIf="frm_Habitacion.get('numero').invalid && frm_Habitacion.get('numero').touched">
+              <small *ngIf="frm_Habitacion.get('numero').hasError('required')" style="color: red">El número es requerido</small>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="tipo">Tipo</label>
+            <input formControlName="tipo" type="text" class="form-control" id="tipo" placeholder="Ingrese el tipo de habitación" />
+            <div *ngIf="frm_Habitacion.get('tipo').invalid && frm_Habitacion.get('tipo').touched">
+              <small *ngIf="frm_Habitacion.get('tipo').hasError('required')" style="color: red">El tipo es requerido</small>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="precio">Precio</label>
+            <input type="number" formControlName="precio" class="form-control" id="precio" placeholder="Ingrese el precio de la habitación" />
+            <div *ngIf="frm_Habitacion.get('precio').invalid && frm_Habitacion.get('precio').touched">
+              <small *ngIf="frm_Habitacion.get('precio').hasError('required')" style="color: red">El precio es requerido</small>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-label" for="disponible">Disponible</label>
+            <select formControlName="disponible" class="form-control" id="disponible">
+              <option value="">Seleccione una opción</option>
+              <option [value]="true">Sí</option>
+              <option [value]="false">No</option>
+            </select>
+            <div *ngIf="frm_Habitacion.get('disponible').invalid && frm_Habitacion.get('disponible').touched">
+              <small *ngIf="frm_Habitacion.get('disponible').hasError('required')" style="color: red">El estado de disponibilidad es requerido</small>
+            </div>
+          </div>
+          <div class="d-grid mt-3">
+            <button type="submit" class="btn btn-primary" [disabled]="frm_Habitacion.invalid">Grabar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!--
+    IMPORTAR => FORMSMODULE  APP.MODULE.TS ||  NUEVOHABITACION.COMPONENT.TS
+    INTERPOLACION => DESDE EL TS AL HTML
+    {{ }} 
+    EVENTOS => EJECUTAR FUNCIONES EN EL TS
+    ()
+    DATA BINDING => DESDE EL HTML AL TS
+    []
+    TWO WAY BINDING => ENVIADO DE DATOS DESDE EL HTML AL TS Y DESDE EL TS AL HTML
+    [()]
+  -->
+  

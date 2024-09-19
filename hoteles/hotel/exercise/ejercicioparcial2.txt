@@ -1,0 +1,5 @@
+Sistema de Gestión de Hoteles:
+ Crea una base de datos para gestionar habitaciones y huéspedes,
+  incluyendo reservas.
+   Tablas: Habitaciones
+    (habitacion_id, numero, tipo, precio, disponible), Huespedes (huesped_id, nombre, apellido, email, telefono). Sebastian Cedillo

@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-sm-12">
+      <app-card cardTitle="Lista de Reservas" blockClass="pc-component">
+        <div class="col-md-12 col-xl-8">
+          <h5 class="mb-3">
+            <a href="nuevareserva" class="btn btn-outline-dark">Nueva Reserva</a>
+          </h5>
+          <div class="card tbl-card">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Huésped</th>
+                    <th>Habitación</th>
+                    <th>Fecha Reserva</th>
+                    <th>Fecha Entrada</th>
+                    <th>Fecha Salida</th>
+                    <th>Estado</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (reserva of listareservas; track $index) {
+                    <tr>
+                      <td>{{ $index + 1 }}</td>
+                      <td>{{ reserva.huesped.nombre }} {{ reserva.huesped.apellido }}</td>
+                      <td>{{ reserva.habitacion.numero }}</td>
+                      <td>{{ reserva.fecha_reserva | date }}</td>
+                      <td>{{ reserva.fecha_entrada | date }}</td>
+                      <td>{{ reserva.fecha_salida | date }}</td>
+                      <td>{{ reserva.estado }}</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-success" [routerLink]="['/editarreserva/', reserva.reserva_id]">
+                          Editar
+                        </button>
+                        <button (click)="eliminar(reserva.reserva_id)" type="button" class="btn btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+  
